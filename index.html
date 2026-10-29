@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>달빛오행 | 사주로 읽는 오늘의 나</title>
+<meta name="description" content="사주와 오행을 명리학 이론에 근거해 차분하게 풀어 쓰는 달빛오행. 오행·일간 성향, 월별 운세, 궁합까지 쉽게 읽어보세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="달빛오행 | 사주로 읽는 오늘의 나">
+<meta property="og:description" content="어렵게만 느껴지던 사주와 오행, 달빛처럼 은은하고 쉽게 풀어드립니다.">
+<meta property="og:image" content="https://k01085493016-tech.github.io/dalbit-ohang/og.jpg">
+<meta property="og:url" content="https://k01085493016-tech.github.io/dalbit-ohang/">
+<link rel="icon" href="profile.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Cormorant+Garamond:wght@500&family=Noto+Sans+KR:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1426; --bg2:#161c30; --card:rgba(255,248,232,.045); --line:rgba(214,190,145,.28);
+    --gold:#e2c793; --gold2:#d6af68; --text:#e9e3d4; --muted:#a9adbd;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Noto Sans KR",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Gowun Batang",serif}
+  .en{font-family:"Cormorant Garamond",serif;letter-spacing:.42em;text-transform:uppercase;font-size:13px;color:rgba(214,190,145,.85)}
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+  main{position:relative;z-index:1}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+  /* hero */
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 120px;position:relative;overflow:hidden}
+  .moon{width:200px;height:200px;margin:-50px 0 -16px;display:block}
+  .hero h1{font-family:"Gowun Batang",serif;font-weight:700;font-size:clamp(48px,9vw,88px);letter-spacing:.18em;margin:18px 0 6px;color:#f4ecdb;text-shadow:0 0 28px rgba(240,210,150,.25)}
+  .hero .sub{font-family:"Gowun Batang",serif;color:#d6be91;font-size:clamp(17px,2.6vw,22px);letter-spacing:.2em;display:flex;align-items:center;gap:16px}
+  .hero .sub::before,.hero .sub::after{content:"";width:44px;height:1px;background:rgba(214,190,145,.55)}
+  .elements{margin-top:22px;font-family:"Gowun Batang",serif;letter-spacing:.9em;font-size:17px}
+  .elements span:nth-child(1){color:#93b89e}.elements span:nth-child(2){color:#dc9f8e}.elements span:nth-child(3){color:#d2b47c}.elements span:nth-child(4){color:#dcdcdc}.elements span:nth-child(5){color:#93abd4}
+  .hero p.lead{margin-top:34px;color:var(--muted);font-size:16px;max-width:520px}
+  .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-size:15px;font-weight:500;transition:.25s}
+  .btn.primary{background:linear-gradient(135deg,#efd9a6,#cfa55f);color:#1a1f33}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(214,175,104,.35)}
+  .btn.ghost{border:1px solid var(--line);color:var(--gold)}
+  .btn.ghost:hover{background:rgba(214,190,145,.08)}
+  .ridges{position:absolute;left:0;right:0;bottom:0;height:160px}
+  .scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:12px;letter-spacing:.3em}
+
+  section{padding:110px 0}
+  .sec-head{text-align:center;margin-bottom:56px}
+  .sec-head h2{font-family:"Gowun Batang",serif;font-size:clamp(26px,4vw,34px);color:#f4ecdb;margin-top:10px;letter-spacing:.06em}
+  .sec-head p{color:var(--muted);margin-top:10px}
+
+  /* about */
+  .about{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:center}
+  .about img{width:220px;height:220px;border-radius:50%;filter:drop-shadow(0 0 30px rgba(240,210,150,.15))}
+  .about h3{font-family:"Gowun Batang",serif;font-size:24px;color:#f4ecdb;margin-bottom:14px}
+  .about p{color:#cfcabb;margin-bottom:10px}
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+  .pr{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px}
+  .pr b{font-family:"Gowun Batang",serif;color:var(--gold);font-size:15px;letter-spacing:.1em}
+  .pr h4{font-family:"Gowun Batang",serif;font-size:19px;margin:8px 0 8px;color:#f4ecdb}
+  .pr p{color:var(--muted);font-size:14.5px}
+
+  /* categories */
+  .cats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;transition:.25s;display:block}
+  .cat:hover{transform:translateY(-4px);border-color:rgba(226,199,147,.6);background:rgba(255,248,232,.07)}
+  .cat .ic{font-family:"Gowun Batang",serif;font-size:26px;color:var(--gold)}
+  .cat h4{font-family:"Gowun Batang",serif;font-size:19px;margin:6px 0 6px;color:#f4ecdb}
+  .cat p{color:var(--muted);font-size:14.5px}
+
+  /* posts */
+  .posts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .post{border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);transition:.25s;display:flex;flex-direction:column}
+  .post:hover{transform:translateY(-4px);border-color:rgba(226,199,147,.6)}
+  .post img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+  .post div{padding:14px 16px 18px}
+  .post small{color:var(--gold);font-size:12px;letter-spacing:.08em}
+  .post h5{font-family:"Gowun Batang",serif;font-size:15.5px;line-height:1.55;margin-top:4px;color:#ece6d6;font-weight:400}
+
+  /* quote */
+  .quote{text-align:center;padding:120px 24px}
+  .quote p{font-family:"Gowun Batang",serif;font-size:clamp(20px,3vw,26px);color:#f4ecdb;line-height:1.9}
+  .quote p em{font-style:normal;color:var(--gold);font-weight:700}
+
+  /* cta */
+  .cta{text-align:center;background:linear-gradient(180deg,transparent,rgba(214,175,104,.06));border-top:1px solid rgba(214,190,145,.12)}
+  .cta h2{font-family:"Gowun Batang",serif;font-size:clamp(24px,3.6vw,32px);color:#f4ecdb}
+  .cta p{color:var(--muted);margin-top:10px}
+
+  footer{text-align:center;padding:40px 24px 50px;color:#6f7487;font-size:13px}
+  footer .serif{color:var(--gold);font-size:15px;letter-spacing:.3em;display:block;margin-bottom:6px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  @media (max-width:860px){
+    .about{grid-template-columns:1fr;text-align:center;gap:28px}
+    .about img{margin:0 auto;width:180px;height:180px}
+    .principles,.cats{grid-template-columns:1fr}
+    .posts{grid-template-columns:repeat(2,1fr)}
+    section{padding:80px 0}
+  }
+  @media (max-width:480px){.posts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<main>
+
+  <!-- HERO -->
+  <header class="hero">
+    <svg class="moon" viewBox="0 0 200 200" aria-hidden="true">
+      <defs>
+        <radialGradient id="glow"><stop offset="0" stop-color="rgba(240,210,150,.30)"/><stop offset="1" stop-color="rgba(240,210,150,0)"/></radialGradient>
+        <linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8e7bd"/><stop offset="1" stop-color="#d6af68"/></linearGradient>
+        <mask id="cres"><rect width="200" height="200" fill="#fff"/><circle cx="121" cy="87" r="37" fill="#000"/></mask>
+      </defs>
+      <circle cx="100" cy="100" r="100" fill="url(#glow)"/>
+      <circle cx="100" cy="100" r="42" fill="url(#mg)" mask="url(#cres)"/>
+    </svg>
+    <div class="en">Moonlight Saju Note</div>
+    <h1>달빛오행</h1>
+    <div class="sub">사주로 읽는 오늘의 나</div>
+    <div class="elements"><span>木</span><span>火</span><span>土</span><span>金</span><span>水</span></div>
+    <p class="lead">어렵게만 느껴지던 사주와 오행,<br>명리학 이론에 근거해 달빛처럼 은은하고 쉽게 풀어드립니다.</p>
+    <div class="btns">
+      <a class="btn primary" href="https://blog.naver.com/moonlight_0620" target="_blank" rel="noopener">☾ 블로그 보러가기</a>
+      <a class="btn ghost" href="https://www.instagram.com/dalbit.ohang/" target="_blank" rel="noopener">인스타그램 @dalbit.ohang</a>
+      <!-- 카카오톡 채널 개설 후 아래 주석을 풀고 링크를 넣어주세요
+      <a class="btn ghost" href="https://pf.kakao.com/채널ID" target="_blank" rel="noopener">카카오톡 채널</a>
+      -->
+    </div>
+    <svg class="ridges" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,70 C160,30 280,60 420,40 C560,20 700,70 860,50 C1020,30 1160,80 1300,55 C1380,42 1420,50 1440,48 L1440,160 L0,160 Z" fill="rgba(40,50,84,.55)"/>
+      <path d="M0,100 C140,80 300,110 460,90 C620,70 760,115 920,100 C1080,85 1240,120 1440,95 L1440,160 L0,160 Z" fill="rgba(30,38,66,.9)"/>
+      <path d="M0,130 C200,118 380,140 560,128 C760,115 940,145 1140,132 C1280,124 1380,135 1440,130 L1440,160 L0,160 Z" fill="#0f1426"/>
+    </svg>
+    <div class="scroll">SCROLL ↓</div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal"><div class="en">About</div><h2>달빛오행을 소개합니다</h2></div>
+      <div class="about reveal">
+        <img src="profile.png" alt="달빛오행 로고">
+        <div>
+          <h3>달빛은 어둠을 걷어내지 않지만,<br>길을 분간할 만큼은 비춰줍니다.</h3>
+          <p>사주 역시 삶의 정답을 대신 정해주는 것이 아니라, 지금 내가 어디쯤 서 있는지를 비춰주는 도구라고 생각합니다.</p>
+          <p>달빛오행은 사주명리학을 기반으로 타고난 기질과 운의 흐름을 차분하게 풀어 쓰는 공간입니다.</p>
+        </div>
+      </div>
+      <div class="principles">
+        <div class="pr reveal"><b>原則 一</b><h4>이론에 근거합니다</h4><p>출처가 불분명한 속설이나 과장된 표현은 지양하고, 명리학의 기본 이론으로 설명합니다.</p></div>
+        <div class="pr reveal"><b>原則 二</b><h4>단정하지 않습니다</h4><p>사주는 경향성을 보여줄 뿐, 길흉을 확정하지 않는다는 관점을 지킵니다.</p></div>
+        <div class="pr reveal"><b>原則 三</b><h4>불안을 조장하지 않습니다</h4><p>살(煞)과 흉운도 낙인이 아니라, 이해하고 대비할 수 있는 정보로 다룹니다.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head reveal"><div class="en">Categories</div><h2>달빛오행에서 다루는 이야기</h2></div>
+      <div class="cats">
+        <a class="cat reveal" href="https://blog.naver.com/PostList.naver?blogId=moonlight_0620&categoryNo=2" target="_blank" rel="noopener"><div class="ic">四柱</div><h4>사주 입문</h4><p>사주와 팔자, 천간과 지지까지 명리학의 기본 구조를 정리합니다.</p></a>
+        <a class="cat reveal" href="https://blog.naver.com/PostList.naver?blogId=moonlight_0620&categoryNo=3" target="_blank" rel="noopener"><div class="ic">五行</div><h4>오행과 성향</h4><p>목·화·토·금·수, 다섯 기운으로 읽는 기질의 차이.</p></a>
+        <a class="cat reveal" href="https://blog.naver.com/PostList.naver?blogId=moonlight_0620&categoryNo=9" target="_blank" rel="noopener"><div class="ic">日干</div><h4>일간별 성향 이야기</h4><p>갑목부터 계수까지, 나를 상징하는 열 가지 일간.</p></a>
+        <a class="cat reveal" href="https://blog.naver.com/PostList.naver?blogId=moonlight_0620&categoryNo=10" target="_blank" rel="noopener"><div class="ic">月運</div><h4>띠별·월별 운세</h4><p>매달 바뀌는 월운의 흐름과 띠별로 짚어볼 점.</p></a>
+        <a class="cat reveal" href="https://blog.naver.com/PostList.naver?blogId=moonlight_0620&categoryNo=11" target="_blank" rel="noopener"><div class="ic">宮合</div><h4>궁합·인연 이야기</h4><p>일간·일지·오행으로 읽는 두 사람의 인연.</p></a>
+        <a class="cat reveal" href="https://blog.naver.com/PostList.naver?blogId=moonlight_0620&categoryNo=12" target="_blank" rel="noopener"><div class="ic">問答</div><h4>사주 궁금증 풀이</h4><p>출생 시간, 음력·양력 등 자주 묻는 질문에 답합니다.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="wrap">
+      <div class="sec-head reveal"><div class="en">Latest Notes</div><h2>달빛오행의 글</h2><p>블로그에서 전문을 읽어보실 수 있습니다.</p></div>
+      <div class="posts">
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224457241335" target="_blank" rel="noopener"><img src="post1.jpg" alt="" loading="lazy"><div><small>사주 입문</small><h5>사주(四柱)란 무엇인가 | 네 기둥과 여덟 글자로 보는 명리학의 기본 구조</h5></div></a>
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224458289302" target="_blank" rel="noopener"><img src="five.jpg" alt="" loading="lazy"><div><small>오행과 성향</small><h5>오행(五行)별 성향 | 목·화·토·금·수로 읽는 기질의 차이</h5></div></a>
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224458290836" target="_blank" rel="noopener"><img src="ilgan.jpg" alt="" loading="lazy"><div><small>일간별 성향 이야기</small><h5>일간(日干) 10가지 성향 총정리 | 갑목부터 계수까지</h5></div></a>
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224458291937" target="_blank" rel="noopener"><img src="month.jpg" alt="" loading="lazy"><div><small>띠별·월별 운세</small><h5>2026년 11월 운세 | 기해월(己亥月)의 흐름과 띠별로 짚어볼 점</h5></div></a>
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224458292961" target="_blank" rel="noopener"><img src="love.jpg" alt="" loading="lazy"><div><small>궁합·인연 이야기</small><h5>사주 궁합은 무엇을 보는가 | 일간·일지·오행으로 읽는 인연의 구조</h5></div></a>
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224458293974" target="_blank" rel="noopener"><img src="qa.jpg" alt="" loading="lazy"><div><small>사주 궁금증 풀이</small><h5>사주 상담 전 자주 묻는 질문 5가지</h5></div></a>
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224458294922" target="_blank" rel="noopener"><img src="diary.jpg" alt="" loading="lazy"><div><small>달빛 일기</small><h5>입동(立冬)을 앞둔 밤에 | 해월(亥月)의 기운을 생각하며</h5></div></a>
+        <a class="post reveal" href="https://blog.naver.com/moonlight_0620/224458285850" target="_blank" rel="noopener"><img src="intro.jpg" alt="" loading="lazy"><div><small>달빛오행 소개</small><h5>달빛오행을 소개합니다 | 블로그 운영 방향과 카테고리 안내</h5></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote reveal">
+    <p>사주는 운명을 단정하는 판결문이 아니라<br><em>타고난 기질과 흐름을 읽는 지도</em>입니다.</p>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap reveal">
+      <div class="en">Follow</div>
+      <h2>달빛 아래에서, 천천히 함께 읽어가요</h2>
+      <p>새 글 소식은 블로그 이웃추가와 인스타그램에서 가장 먼저 만나보세요.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://m.blog.naver.com/BuddyAddForm.naver?blogId=moonlight_0620" target="_blank" rel="noopener">＋ 블로그 이웃추가</a>
+        <a class="btn ghost" href="https://www.instagram.com/dalbit.ohang/" target="_blank" rel="noopener">인스타그램 팔로우</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="serif">달빛오행</span>
+    © 2026 달빛오행 · Moonlight Saju Note
+  </footer>
+</main>
+
+<script>
+  // starfield
+  const cv=document.getElementById('stars'),cx=cv.getContext('2d');let stars=[];
+  function size(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;
+    stars=Array.from({length:Math.round(innerWidth*innerHeight/5000)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:(Math.random()*1.2+.3)*devicePixelRatio,a:Math.random()*.6+.1,s:Math.random()*.02+.004,p:Math.random()*6}));}
+  function draw(t){cx.clearRect(0,0,cv.width,cv.height);
+    const g=cx.createLinearGradient(0,0,0,cv.height);g.addColorStop(0,'#0a0f20');g.addColorStop(1,'#161c30');cx.fillStyle=g;cx.fillRect(0,0,cv.width,cv.height);
+    for(const s of stars){const a=s.a*(.65+.35*Math.sin(t*s.s*.06+s.p));cx.beginPath();cx.arc(s.x,s.y,s.r,0,7);cx.fillStyle=`rgba(255,246,225,${a})`;cx.fill();}
+    requestAnimationFrame(draw);}
+  addEventListener('resize',size);size();requestAnimationFrame(draw);
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
